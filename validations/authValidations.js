@@ -17,16 +17,16 @@ export const registerValidation = Joi.object({
     "string.email": "Invalid email format",
   }),
 
-  password: Joi.string()
-    .pattern(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
-    )
-    .required()
-    .messages({
-      "string.empty": "Password is required",
-      "string.pattern.base":
-        "Password must include at least one uppercase, one lowercase, one number, one special character, and be at least 6 characters long",
-    }),
+  // password: Joi.string()
+  //   .pattern(
+  //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
+  //   )
+  //   .required()
+  //   .messages({
+  //     "string.empty": "Password is required",
+  //     "string.pattern.base":
+  //       "Password must include at least one uppercase, one lowercase, one number, one special character, and be at least 6 characters long",
+  //   }),
 
   // role is OPTIONAL, but only accepts specific values when provided
   role: Joi.string()
