@@ -118,190 +118,185 @@ Server will run on:
 
 ## 📘 Swagger API Documentation
 
-openapi: 3.0.0
-info:
-title: REST API
-description: Auto-generated Swagger documentation for this project
-version: 1.0.0
-
-servers:
-
-- url: http://localhost:9002
-
-paths:
-
-/api/auth/register:
-post:
-summary: Register a new user
-requestBody:
-required: true
-content:
-application/json:
-schema:
-type: object
-properties:
-username:
-type: string
-email:
-type: string
-password:
-type: string
-role:
-type: string
-age:
-type: number
-responses:
-"201":
-description: Created
-"400":
-description: Bad Request
-
-/api/auth/login:
-post:
-summary: User login
-requestBody:
-required: true
-content:
-application/json:
-schema:
-type: object
-properties:
-email:
-type: string
-password:
-type: string
-responses:
-"200":
-description: OK
-"400":
-description: Bad Request
-"401":
-description: Unauthorized
-
-/api/users/:
-get:
-summary: Get all users
-parameters: - name: age
-in: query
-schema:
-type: string - name: role
-in: query
-schema:
-type: string
-responses:
-"200":
-description: OK
-
-/api/users/{id}:
-get:
-summary: Get user by ID
-parameters: - name: id
-in: path
-required: true
-schema:
-type: string
-responses:
-"200":
-description: OK
-"400":
-description: Bad Request
-"404":
-description: Not Found
-
-/api/products/create:
-post:
-summary: Create new product
-requestBody:
-required: true
-content:
-application/json:
-schema:
-type: object
-properties:
-name:
-type: string
-brand:
-type: string
-price:
-type: number
-discountPrice:
-type: number
-responses:
-"201":
-description: Created
-"400":
-description: Bad Request
-"403":
-description: Forbidden
-
-/api/products/:
-get:
-summary: Get all products
-parameters: - name: name
-in: query
-schema:
-type: string - name: brand
-in: query
-schema:
-type: string - name: sort
-in: query
-schema:
-type: string - name: order
-in: query
-schema:
-type: string
-responses:
-"200":
-description: OK
-
-/api/products/{id}:
-patch:
-summary: Update product
-parameters: - name: id
-in: path
-required: true
-schema:
-type: string
-requestBody:
-required: false
-content:
-application/json:
-schema:
-type: object
-properties:
-name:
-type: string
-brand:
-type: string
-price:
-type: number
-discountPrice:
-type: number
-responses:
-"200":
-description: OK
-"400":
-description: Bad Request
-"403":
-description: Forbidden
-"404":
-description: Not Found
-
-delete:
-summary: Delete product
-parameters: - name: id
-in: path
-required: true
-schema:
-type: string
-responses:
-"200":
-description: OK
-"403":
-description: Forbidden
-"404":
-description: Not Found
-
+```json
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "REST API",
+    "description": "Auto-generated Swagger doc",
+    "version": "1.0.0"
+  },
+  "host": "localhost:9002",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/api/auth/register": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                },
+                "role": { "example": "any" },
+                "age": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": { "description": "Bad Request" }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    },
+    "/api/users/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          { "name": "age", "in": "query", "type": "string" },
+          { "name": "role", "in": "query", "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    },
+    "/api/products/create": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "example": "any" },
+                "brand": { "example": "any" },
+                "price": { "example": "any" },
+                "discountPrice": { "example": "any" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": { "description": "Created" },
+          "400": { "description": "Bad Request" },
+          "403": { "description": "Forbidden" }
+        }
+      }
+    },
+    "/api/products/": {
+      "get": {
+        "description": "",
+        "parameters": [
+          { "name": "name", "in": "query", "type": "string" },
+          { "name": "brand", "in": "query", "type": "string" },
+          { "name": "sort", "in": "query", "type": "string" },
+          { "name": "order", "in": "query", "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/api/products/{id}": {
+      "patch": {
+        "description": "",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": { "example": "any" },
+                "brand": { "example": "any" },
+                "price": { "example": "any" },
+                "discountPrice": { "example": "any" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "400": { "description": "Bad Request" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Not Found" }
+        }
+      }
+    }
+  }
+}
+```
 ---
 
 If this project helped you, a ⭐ on the repo would mean a lot!
