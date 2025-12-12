@@ -184,7 +184,5 @@ Server will run on:
   }
 }
 
----
 
-If this project helped you, a ⭐ on the repo would mean a lot!
 
